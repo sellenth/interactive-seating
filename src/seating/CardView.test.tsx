@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from '@testing-library/react'
 import { CardView } from "./CardView";
-import { CardHolder } from "./card/CardHolder";
+import { CardHolder } from "../card/CardHolder";
 
 describe('<CardHolder />', () => {
   it('renders a single card', () => {

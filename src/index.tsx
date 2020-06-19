@@ -3,14 +3,18 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import { CardView } from "./seating/CardView";
 import * as serviceWorker from "./serviceWorker";
-import { dummyJurors, JurorType } from './dummies/Jurors';
+import { JurorType } from './dummies/Jurors';
+
+function getRandomInt(max: number) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
 
 function generateJurors(number: number){
   const Jurors = []
   for (let i = 0; i < number; i++){
     Jurors.push({
       name: `Juror ${i}`,
-      age: 22
+      age: getRandomInt(50)
     })
   }
   return Jurors;
@@ -40,7 +44,7 @@ function createLayoutFromJurors(jurors: JurorType[]): ReactGridLayout.Layout[]{
 }
 
 export function TestEnv() {
-  const jurors = generateJurors(10);
+  const jurors = generateJurors(3);
   const layout = createLayoutFromJurors(jurors);
   console.log(layout)
   return (
