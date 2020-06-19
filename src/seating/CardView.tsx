@@ -3,7 +3,7 @@ import styles from "./CardView.module.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import RGL, { WidthProvider } from "react-grid-layout";
 import { JurorType } from "../dummies/Jurors";
-import Card from "./card/Card";
+import { CardHolder } from "./card/CardHolder";
 
 const GridLayout = WidthProvider(RGL);
 
@@ -21,13 +21,19 @@ export const CardView: FunctionComponent<CardProps> = ({ layout, jurors }) => {
       compactType="horizontal"
       autoSize={false}
       cols={Math.ceil(Math.sqrt(layout.length))}
-      rowHeight={60}
+      maxRows={Math.ceil(Math.sqrt(layout.length))}
+      rowHeight={150}
     >
-      {jurors.map((j, i) => {
-        return (
-          <Card key={String.fromCharCode(i + 97)}></Card>
-        );
-      })}
+      {!!layout &&
+        layout.map((_, i) => {
+          return (
+            <div key={i.toString()}>
+              {(i < jurors.length && 
+                <CardHolder juror={jurors[i]} />) ||
+                <CardHolder />}
+            </div>
+          );
+        })}
     </GridLayout>
   );
 };

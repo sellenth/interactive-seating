@@ -5,6 +5,17 @@ import { CardView } from "./seating/CardView";
 import * as serviceWorker from "./serviceWorker";
 import { dummyJurors, JurorType } from './dummies/Jurors';
 
+function generateJurors(number: number){
+  const Jurors = []
+  for (let i = 0; i < number; i++){
+    Jurors.push({
+      name: `Juror ${i}`,
+      age: 22
+    })
+  }
+  return Jurors;
+}
+
 function createLayoutFromJurors(jurors: JurorType[]): ReactGridLayout.Layout[]{
   const sideLength = Math.ceil(Math.sqrt(jurors.length));
   let x: number = 0;
@@ -12,16 +23,16 @@ function createLayoutFromJurors(jurors: JurorType[]): ReactGridLayout.Layout[]{
   const layout = [];
   for (let i = 0; i < sideLength ** 2; i++){
     layout.push({
-      i: String.fromCharCode(i + 97),
+      i: i.toString(),
       x: x,
       y: y,
       w: 1,
       h: 1,
     })
-    y += 1
-    if ( y >= sideLength ){
-      y = 0;
-      x += 1;
+    x += 1
+    if ( x >= sideLength ){
+      x = 0;
+      y += 1;
     }
   }
   return layout;
@@ -29,7 +40,7 @@ function createLayoutFromJurors(jurors: JurorType[]): ReactGridLayout.Layout[]{
 }
 
 export function TestEnv() {
-  const [jurors, setJurors] = useState(dummyJurors);
+  const jurors = generateJurors(10);
   const layout = createLayoutFromJurors(jurors);
   console.log(layout)
   return (
@@ -40,7 +51,7 @@ export function TestEnv() {
 
 ReactDOM.render(
   <React.StrictMode>
-    <TestEnv></TestEnv>
+    <TestEnv />
   </React.StrictMode>,
   document.getElementById("root")
 );
