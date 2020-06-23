@@ -1,26 +1,54 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import { CardView } from "./seating/CardView";
 import * as serviceWorker from "./serviceWorker";
-import { JurorType } from './dummies/Jurors';
+import { NewJurorType } from './types/Jurors';
+
+interface ServerResponse {
+  data: NewJurorType[]
+}
+
+const axios = require('axios').default;
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://192.81.209.97:8000/api/'; //hosted ip doesn't work for me
+const API_USERNAME = process.env.REACT_APP_API_USERNAME;
+const API_PASSWORD = process.env.REACT_APP_API_PASSWORD;
+const API_CASE_SLUG = process.env.REACT_APP_API_CASE_SLUG;
+
+function fetchJurors(setJurors: CallableFunction, setLayout: CallableFunction){
+  const URL = API_BASE_URL + 'api/jurors/' + 
+    API_CASE_SLUG + '/?format=json';
+  axios.get(URL, {
+    auth: {
+      username: API_USERNAME,
+      password: API_PASSWORD 
+    }
+  })
+  .then((response: ServerResponse) => {
+    setJurors(response.data);
+    setLayout(createLayoutFromJurors(response.data))
+  })
+  .catch(function (error: String) {
+    // handle error
+    console.log(error);
+  })
+}
 
 function getRandomInt(max: number) {
   return Math.floor(Math.random() * Math.floor(max));
 }
 
-function generateJurors(number: number){
-  const Jurors = []
+function generateJurors(number: number): NewJurorType[]{
+  const Jurors: NewJurorType[] = []
   for (let i = 0; i < number; i++){
     Jurors.push({
-      name: `Juror ${i}`,
-      age: getRandomInt(50)
-    })
-  }
-  return Jurors;
+      first_name: `Juror ${i}`,
+      risk_score_ai: getRandomInt(100).toString()
+    }) }
+   return Jurors;
 }
 
-function createLayoutFromJurors(jurors: JurorType[]): ReactGridLayout.Layout[]{
+function createLayoutFromJurors(jurors: NewJurorType[]): ReactGridLayout.Layout[]{
   const sideLength = Math.ceil(Math.sqrt(jurors.length));
   let x: number = 0;
   let y: number = 0;
@@ -44,9 +72,16 @@ function createLayoutFromJurors(jurors: JurorType[]): ReactGridLayout.Layout[]{
 }
 
 export function TestEnv() {
-  const jurors = generateJurors(3);
-  const layout = createLayoutFromJurors(jurors);
-  console.log(layout)
+  //const jurors = generateJurors(8);
+  //const layout = createLayoutFromJurors(jurors);
+
+  const [ jurors, setJurors ] = useState([]);
+  const [ layout, setLayout ] = useState([]);
+  useEffect(() => {
+    fetchJurors(setJurors, setLayout);
+  }, [])
+
+
   return (
     <CardView layout={layout} jurors={jurors}/>
   )

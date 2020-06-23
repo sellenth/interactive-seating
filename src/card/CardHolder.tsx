@@ -5,10 +5,10 @@ import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import { JurorType } from "../dummies/Jurors";
+import { JurorType, NewJurorType } from "../types/Jurors";
 
 interface Props {
-  juror?: JurorType;
+  juror?: NewJurorType;
   setVisibility?: CallableFunction;
   setCurrJuror?: CallableFunction;
 }
@@ -36,7 +36,7 @@ export const CardHolder: FunctionComponent<Props> = ({ juror, setVisibility, set
         </Button>
         <Card.Body style={{ padding: "0px" }}>
           <Card.Header style={{padding: "0px"}} className={styles.cardHeader}>
-            {juror.name}
+            {juror.first_name}
           </Card.Header>
           <Card.Text className={styles.cardText}>
             Some quick example text to build on the card title and make up the

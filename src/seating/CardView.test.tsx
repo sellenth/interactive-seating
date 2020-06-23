@@ -5,7 +5,7 @@ import { CardHolder } from "../card/CardHolder";
 
 describe('<CardHolder />', () => {
   it('renders a single card', () => {
-    render(<CardHolder juror={{name: "Halston", age: 22}} />)
+    render(<CardHolder juror={{first_name: "Halston", risk_score_ai: "22"}} />)
   })
 
   it('renders testing env', () => {
