@@ -1,9 +1,4 @@
-export type JurorType = {
-  name: string,
-  age: number
-}
-
-export interface NewJurorType {
+export interface JurorType {
   first_name: string;
   middle_initial?: string;
   last_name?: string;

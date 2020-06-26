@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import { JurorType, NewJurorType } from "../types/Jurors";
+import { JurorType } from "../types/Jurors";
 
 interface Props {
-  visible: Boolean;
+  visible: boolean;
   setVisibility: CallableFunction;
-  juror?: NewJurorType;
+  juror?: JurorType;
 }
 
 export const JurorModal = ({ visible, setVisibility, juror }: Props) => {
@@ -14,29 +14,27 @@ export const JurorModal = ({ visible, setVisibility, juror }: Props) => {
   const handleShow = () => setVisibility(true);
 
   if (juror) {
-  return (
-    <Modal show={visible} onHide={handleClose}>
-      <Modal.Header closeButton>
-        <Modal.Title>{juror.first_name}</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>{`Risk Score (AI): ${juror.risk_score_ai}`}</Modal.Body>
-      <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
-          Close
-        </Button>
-        <Button variant="primary" onClick={handleClose}>
-          Save Changes
-        </Button>
-      </Modal.Footer>
-    </Modal>
-  );
+    return (
+      <Modal show={visible} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>{juror.first_name}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>{`Risk Score (AI): ${juror.risk_score_ai}`}</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    );
   } else {
     return (
       <div>
-        <h1>
-          Modal Placeholder
-        </h1>
+        <h1>Modal Placeholder</h1>
       </div>
-    )
+    );
   }
 };
