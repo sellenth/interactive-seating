@@ -2,7 +2,7 @@ import React, { useState, FunctionComponent, useEffect } from "react";
 import styles from "./CardView.module.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import RGL, { WidthProvider } from "react-grid-layout";
-import { JurorType } from "../types/Jurors";
+import { JurorType } from "types/Jurors";
 import { CardHolder } from "../card/CardHolder";
 import { JurorModal } from "../jurorModal/JurorModal";
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import { JurorType } from "../types/Jurors";
+import { JurorType } from "types/Jurors";
 
 interface Props {
   visible: boolean;

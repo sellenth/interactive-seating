@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
-import Seating from "./seating/Seating";
-import Scan from "./scan/Scan";
-import Landing from "./landing/Landing";
+import Seating from "./pages/seating/Seating";
+import Scan from "./pages/scan/Scan";
+import Landing from "./pages/landing/Landing";
 
 ReactDOM.render(
   <React.StrictMode>
