@@ -1,3 +1,5 @@
+## Click [here](https://fierce-sands-20086.herokuapp.com/) to view progress
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
