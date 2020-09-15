@@ -1,13 +1,22 @@
 import React, { useState } from "react";
-//a very fun bug. Removing this unused button import causes
-//a styling issue with the occupation text input
-import { Button } from "@material-ui/core";
 import ScopedCssBaseline from "@material-ui/core/ScopedCssBaseline";
+import { Box, makeStyles } from "@material-ui/core";
 import JurorCard from "./JurorCard/JurorCard";
 import { JurorsProvider } from "./JurorsContext";
 import "./App.css";
 
+const useStyles = makeStyles((theme) => ({
+  cardWrapper: {
+    height: "100vh",
+    display: "grid",
+    gridTemplateColumns: "repeat(4, 1fr)",
+    gridTemplateRows: "repeat(4, 1fr)",
+    gap: "5px",
+  },
+}));
+
 function App() {
+  const classes = useStyles();
   const [swapIdx, setSwapIdx] = useState();
   const [arrangement, setArrangement] = useState(
     Array.from(new Array(16), (val, index) => "juror" + index)
@@ -25,7 +34,7 @@ function App() {
   const closeButton = (currIdx) => {
     setArrangement((currArrangment) => {
       const arrangement = [...currArrangment];
-      arrangement[currIdx] = "N/A";
+      arrangement[currIdx] = "";
       return arrangement;
     });
   };
@@ -43,7 +52,7 @@ function App() {
   return (
     <ScopedCssBaseline>
       <JurorsProvider>
-        <div className="CardWrapper">
+        <Box className={classes.cardWrapper}>
           {arrangement.map((jurorNumber, idx) => {
             return (
               <JurorCard
@@ -55,7 +64,7 @@ function App() {
               />
             );
           })}
-        </div>
+        </Box>
       </JurorsProvider>
     </ScopedCssBaseline>
   );

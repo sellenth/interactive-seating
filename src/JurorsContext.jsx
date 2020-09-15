@@ -7,7 +7,10 @@ function generateJuror() {
   const chance = new Chance();
   return {
     name: chance.name(),
-    gender: "",
+    imgUrl:
+      "https://en.gravatar.com/userimage/192664260/2218fe5f3bf980f07c7713bd6ad345ec.jpeg",
+    userScore: chance.integer({ min: 0, max: 10 }),
+    aiScore: chance.integer({ min: 0, max: 10 }),
     race: "",
     marital: "",
     housing: "",
