@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
+import JurorsContext from "../../JurorsContext";
 
 export default function HousingRadio(props) {
-  const [housing, setHousing] = React.useState("");
+  const { JurorsData, setJuror } = useContext(JurorsContext);
 
   const handleChange = (event) => {
-    setHousing(event.target.value);
+    setJuror("housing", event.target.value, props.juror);
   };
 
   return (
@@ -19,7 +20,7 @@ export default function HousingRadio(props) {
         row
         aria-label="housing"
         name="housing1"
-        value={housing}
+        value={JurorsData[props.juror].housing}
         onChange={handleChange}
       >
         <FormControlLabel value="own" control={<Radio />} label="Own" />

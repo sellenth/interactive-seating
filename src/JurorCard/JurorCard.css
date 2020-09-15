@@ -1,6 +1,7 @@
 .card {
   background-color: red;
   display: grid;
+  overflow: hidden;
 }
 
 .header {
@@ -17,6 +18,10 @@
   background-color: powderblue;
 }
 
+.swapIcon {
+  width: 5em;
+}
+
 .blankButton {
   background-color: palegreen;
 }
@@ -24,11 +29,10 @@
 .body {
   background-color: pink;
   display: grid;
-  grid-template-rows: repeat(6, 1fr) 3fr 3fr 1fr;
 }
 
 .body > div {
-  padding-left: 5px;
+  padding-left: 8px;
 }
 
 .body > div:nth-child(odd) {

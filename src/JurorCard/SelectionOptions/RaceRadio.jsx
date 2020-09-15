@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
+import JurorsContext from "../../JurorsContext";
 
 export default function RaceRadio(props) {
-  const [race, setRace] = React.useState("");
+  const { JurorsData, setJuror } = useContext(JurorsContext);
 
   const handleChange = (event) => {
-    setRace(event.target.value);
+    setJuror("race", event.target.value, props.juror);
   };
 
   return (
@@ -19,7 +20,7 @@ export default function RaceRadio(props) {
         row
         aria-label="race"
         name="race1"
-        value={race}
+        value={JurorsData[props.juror].race}
         onChange={handleChange}
       >
         <FormControlLabel value="W" control={<Radio />} label="W" />

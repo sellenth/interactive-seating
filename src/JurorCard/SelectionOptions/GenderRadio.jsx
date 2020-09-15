@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
+import JurorsContext from "../../JurorsContext";
 
 export default function GenderRadio(props) {
-  const [gender, setGender] = React.useState("");
+  const { JurorsData, setJuror } = useContext(JurorsContext);
 
   const handleChange = (event) => {
-    setGender(event.target.value);
+    setJuror("gender", event.target.value, props.juror);
   };
 
   return (
@@ -19,7 +20,7 @@ export default function GenderRadio(props) {
         row
         aria-label="gender"
         name="gender1"
-        value={gender}
+        value={JurorsData[props.juror].gender}
         onChange={handleChange}
       >
         <FormControlLabel value="male" control={<Radio />} label="M" />
