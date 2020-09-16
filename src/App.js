@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import ScopedCssBaseline from "@material-ui/core/ScopedCssBaseline";
-import { Box, makeStyles } from "@material-ui/core";
+import { Box, makeStyles, Modal } from "@material-ui/core";
 import JurorCard from "./JurorCard/JurorCard";
+import JurorModal from "./JurorModal";
 import { JurorsProvider } from "./JurorsContext";
 import "./App.css";
 
@@ -17,10 +18,20 @@ const useStyles = makeStyles((theme) => ({
 
 function App() {
   const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+  const [currJuror, setCurrJuror] = React.useState("juror1");
   const [swapIdx, setSwapIdx] = useState();
   const [arrangement, setArrangement] = useState(
     Array.from(new Array(16), (val, index) => "juror" + index)
   );
+  const handleOpen = (currJuror) => {
+    setCurrJuror(currJuror);
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const switchButton = (currIdx) => {
     if (swapIdx !== undefined) {
@@ -56,6 +67,7 @@ function App() {
           {arrangement.map((jurorNumber, idx) => {
             return (
               <JurorCard
+                openModal={handleOpen}
                 juror={jurorNumber}
                 key={idx}
                 keyId={idx}
@@ -65,6 +77,11 @@ function App() {
             );
           })}
         </Box>
+        <JurorModal
+          open={open}
+          handleClose={handleClose}
+          currJuror={currJuror}
+        />
       </JurorsProvider>
     </ScopedCssBaseline>
   );

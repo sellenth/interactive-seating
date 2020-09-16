@@ -8,13 +8,14 @@ function generateJuror() {
   return {
     name: chance.name(),
     imgUrl:
-      "https://en.gravatar.com/userimage/192664260/2218fe5f3bf980f07c7713bd6ad345ec.jpeg",
+      "https://secure.gravatar.com/avatar/7a6e9c373b4b2c0325beca60ac9d8094?s=128",
     userScore: chance.integer({ min: 0, max: 10 }),
     aiScore: chance.integer({ min: 0, max: 10 }),
+    gender: "",
     race: "",
     marital: "",
     housing: "",
-    occupation: "",
+    occupation: chance.profession({ rank: true }),
   };
 }
 

@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import {
-  Typography,
   Button,
   Box,
   Card,
@@ -45,33 +44,41 @@ export default function JurorCard(props) {
   const classes = useStyles();
   const { JurorsData } = useContext(JurorsContext);
   return props.juror ? (
-    <Card className={classes.card}>
-      <JurorCardHeader
-        keyId={props.keyId}
-        switchAction={props.switchAction}
-        closeAction={props.closeAction}
-        jurorName={JurorsData[props.juror].name}
-      />
-      <CardContent className={classes.content}>
-        <Avatar
-          variant="rounded"
-          alt={JurorsData[props.juror].name[0]}
-          src={JurorsData[props.juror].imgUrl}
-          className={classes.avatar}
-        >
-          {JurorsData[props.juror].name[0]}
-        </Avatar>
-        <Box className={classes.rightHalf}>
-          <JurorCardScores
-            userScore={JurorsData[props.juror].userScore}
-            aiScore={JurorsData[props.juror].aiScore}
-          />
-          <Button color="primary" className={classes.editButton}>
-            Edit
-          </Button>
-        </Box>
-      </CardContent>
-    </Card>
+    <>
+      <Card className={classes.card}>
+        <JurorCardHeader
+          keyId={props.keyId}
+          switchAction={props.switchAction}
+          closeAction={props.closeAction}
+          jurorName={JurorsData[props.juror].name}
+        />
+        <CardContent className={classes.content}>
+          <Avatar
+            variant="rounded"
+            alt={JurorsData[props.juror].name[0]}
+            src={JurorsData[props.juror].imgUrl}
+            className={classes.avatar}
+          >
+            {JurorsData[props.juror].name[0]}
+          </Avatar>
+          <Box className={classes.rightHalf}>
+            <JurorCardScores
+              userScore={JurorsData[props.juror].userScore}
+              aiScore={JurorsData[props.juror].aiScore}
+            />
+            <Button
+              onClick={() => {
+                props.openModal(props.juror);
+              }}
+              color="primary"
+              className={classes.editButton}
+            >
+              Edit
+            </Button>
+          </Box>
+        </CardContent>
+      </Card>
+    </>
   ) : (
     <div>.</div>
   );
