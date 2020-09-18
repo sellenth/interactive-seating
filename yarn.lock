@@ -3102,7 +3102,7 @@ color-convert@^2.0.1:
   dependencies:
     color-name "~1.1.4"
 
-color-hash@^1.0.3, write@1.0.3:
+color-hash@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/color-hash/-/color-hash-1.0.3.tgz#c0e7952f06d022e548e65da239512bd67d3809ee"
   integrity sha1-wOeVLwbQIuVI5l2iOVEr1n04Ce4=
