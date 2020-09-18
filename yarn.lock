@@ -1986,6 +1986,13 @@ acorn@^7.1.1:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-7.1.1.tgz#e35668de0b402f359de515c5482a1ab9f89a69bf"
   integrity sha512-add7dgA5ppRPxCFJoAGfMDi7PIBXq1RtGo7BhbLaxwrXPOmw8gq48Y9ozT01hUKy9byMjlR20EJhu5zlkErEkg==
 
+add-filename-increment@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/add-filename-increment/-/add-filename-increment-1.0.0.tgz#106feea10dcda5d2bfe25a5e83d347382f9dd97d"
+  integrity sha512-pFV8VZX8jxuVMIycKvGZkWF/ihnUubu9lbQVnOnZWp7noVxbKQTNj7zG2y9fXdPcuZ6lAN3Drr517HaivGCjdQ==
+  dependencies:
+    strip-filename-increment "^2.0.1"
+
 address@1.1.2, address@^1.0.1:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/address/-/address-1.1.2.tgz#bf1116c9c758c51b7a933d296b72c221ed9428b6"
@@ -2872,9 +2879,9 @@ caniuse-api@^3.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001020, caniuse-lite@^1.0.30001035:
-  version "1.0.30001035"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001035.tgz#2bb53b8aa4716b2ed08e088d4dc816a5fe089a1e"
-  integrity sha512-C1ZxgkuA4/bUEdMbU5WrGY4+UhMFFiXrgNAfxiMIqWgFTWfv/xsZCS2xEHT2LMq7xAZfuAnu6mcqyDl0ZR6wLQ==
+  version "1.0.30001131"
+  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001131.tgz"
+  integrity sha512-4QYi6Mal4MMfQMSqGIRPGbKIbZygeN83QsWq1ixpUwvtfgAZot5BrCKzGygvZaV+CnELdTwD0S4cqUNozq7/Cw==
 
 capture-exit@^2.0.0:
   version "2.0.0"
@@ -3102,7 +3109,8 @@ color-convert@^2.0.1:
   dependencies:
     color-name "~1.1.4"
 
-color-hash@^1.0.3:
+color-hash@^1.0.3, write@1.0.3:
+  name color-hash
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/color-hash/-/color-hash-1.0.3.tgz#c0e7952f06d022e548e65da239512bd67d3809ee"
   integrity sha1-wOeVLwbQIuVI5l2iOVEr1n04Ce4=
@@ -10013,6 +10021,11 @@ strip-eof@^1.0.0:
   resolved "https://registry.yarnpkg.com/strip-eof/-/strip-eof-1.0.0.tgz#bb43ff5598a6eb05d89b59fcd129c983313606bf"
   integrity sha1-u0P/VZim6wXYm1n80SnJgzE2Br8=
 
+strip-filename-increment@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/strip-filename-increment/-/strip-filename-increment-2.0.1.tgz#3feca2ebd529d4cdcad0281a9bbb2660b096fcc6"
+  integrity sha512-+v5xsiTTsdYqkPj7qz1zlngIsjZedhHDi3xp/9bMurV8kXe9DAr732gNVqtt4X8sI3hOqS3nlFfps5gyVcux6w==
+
 strip-indent@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/strip-indent/-/strip-indent-3.0.0.tgz#c32e1cee940b6b3432c771bc2c54bcce73cd3001"
@@ -10984,6 +10997,13 @@ write-file-atomic@2.4.1:
     graceful-fs "^4.1.11"
     imurmurhash "^0.1.4"
     signal-exit "^3.0.2"
+
+write@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/write/-/write-2.0.0.tgz#d6320a5f764fbd6ee93022f61273d62fa23dbd04"
+  integrity sha512-yam9TAqN8sAZokECAejo9HpT2j2s39OgK8i8yxadrFBVo+iSWLfnipRVFulfAw1d2dz5vSuGmlMHYRKG4fysOA==
+  dependencies:
+    add-filename-increment "^1.0.0"
 
 ws@^5.2.0:
   version "5.2.2"

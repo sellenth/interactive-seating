@@ -14,13 +14,23 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: Colors.light4,
     position: "relative",
     boxShadow: `0 4px 4px -1px ${Colors.light5}`,
+    overflow: "hidden",
   },
   actionButton: {
     position: "absolute",
     right: "-5px",
+    display: "grid",
+    gridTemplateRows: "1fr 1fr",
   },
   swapButton: {
+    height: "fit-content",
+    paddingBottom: "0px",
     paddingTop: "10px",
+    minWidth: "32px",
+  },
+  deleteButton: {
+    paddingTop: "0px",
+    height: "fit-content",
     minWidth: "32px",
   },
   jurorName: {
@@ -37,25 +47,28 @@ export default function JurorCardHeader(props) {
         <Typography className={classes.jurorName}>{props.jurorName}</Typography>
       }
       action={
-        <div className={classes.actionButton}>
-          <Button
-            className={classes.swapButton}
-            onClick={() => {
-              props.switchAction(props.keyId);
-            }}
-          >
-            <LoopIcon color="action" />
-          </Button>
-          {/*
-          
-          <Button
-            className={classes.actionButton}
-            onClick={() => props.closeAction(props.keyId)}
-          >
-            <CloseIcon color="action" />
-          </Button>
-*/}
-        </div>
+        props.inStack ? (
+          ""
+        ) : (
+          <div className={classes.actionButton}>
+            <Button
+              className={classes.swapButton}
+              onClick={() => {
+                props.switchAction(props.keyId);
+              }}
+            >
+              <LoopIcon color="action" />
+            </Button>
+            {
+              <Button
+                className={classes.deleteButton}
+                onClick={() => props.closeAction(props.keyId)}
+              >
+                <CloseIcon color="action" />
+              </Button>
+            }
+          </div>
+        )
       }
     ></CardHeader>
   );

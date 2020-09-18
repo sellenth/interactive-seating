@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Chance from "chance";
 
 const JurorsContext = React.createContext();
+export const numJurors = 8;
 
 function generateJuror() {
   const chance = new Chance();
@@ -21,7 +22,7 @@ function generateJuror() {
 
 function genereateJurors() {
   const jurors = {};
-  for (var i = 0; i < 25; i++) {
+  for (var i = 0; i < numJurors; i++) {
     jurors[`juror${i}`] = generateJuror();
   }
   return jurors;

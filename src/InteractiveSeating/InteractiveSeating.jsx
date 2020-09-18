@@ -3,8 +3,11 @@ import ScopedCssBaseline from "@material-ui/core/ScopedCssBaseline";
 import { Box, makeStyles } from "@material-ui/core";
 import JurorCard from "./JurorCard";
 import JurorModal from "./JurorModal";
-import { JurorsProvider } from "./JurorsContext";
+import CardStack from "./CardStack";
+import { JurorsProvider, numJurors } from "./JurorsContext";
 import Colors from "./Colors";
+
+const jurorsInBox = 6;
 
 const useStyles = makeStyles((theme) => ({
   cardWrapper: {
@@ -12,8 +15,14 @@ const useStyles = makeStyles((theme) => ({
     width: "fit-content",
     backgroundColor: Colors.light1,
     display: "grid",
-    gridTemplateColumns: "repeat(6, 1fr)",
+    position: "relative",
+    gridTemplateColumns: `repeat(${jurorsInBox}, 1fr)`,
     gap: "5px",
+  },
+  cheek: {
+    backgroundColor: "red",
+    position: "absolute",
+    left: "100px",
   },
 }));
 
@@ -22,8 +31,9 @@ function App() {
   const [open, setOpen] = React.useState(false);
   const [currJuror, setCurrJuror] = React.useState("juror1");
   const [swapIdx, setSwapIdx] = useState();
+  const [jurorOnDeck, setJurorOnDeck] = useState(jurorsInBox);
   const [arrangement, setArrangement] = useState(
-    Array.from(new Array(6), (val, index) => "juror" + index)
+    Array.from(new Array(jurorsInBox), (val, index) => "juror" + index)
   );
   const handleOpen = (currJuror) => {
     setCurrJuror(currJuror);
@@ -43,10 +53,19 @@ function App() {
     }
   };
 
+  const nextJurorOnDeck = () => {
+    if (jurorOnDeck + 1 < numJurors) {
+      setJurorOnDeck(jurorOnDeck + 1);
+    } else {
+      setJurorOnDeck("");
+    }
+  };
+
   const closeButton = (currIdx) => {
     setArrangement((currArrangment) => {
       const arrangement = [...currArrangment];
-      arrangement[currIdx] = "";
+      arrangement[currIdx] = `juror${jurorOnDeck}`;
+      nextJurorOnDeck();
       return arrangement;
     });
   };
@@ -83,6 +102,10 @@ function App() {
           open={open}
           handleClose={handleClose}
           currJuror={currJuror}
+        />
+        <CardStack
+          juror={jurorOnDeck ? `juror${jurorOnDeck}` : ""}
+          openModal={handleOpen}
         />
       </JurorsProvider>
     </ScopedCssBaseline>
