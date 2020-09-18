@@ -64,7 +64,8 @@ function App() {
   const closeButton = (currIdx) => {
     setArrangement((currArrangment) => {
       const arrangement = [...currArrangment];
-      arrangement[currIdx] = `juror${jurorOnDeck}`;
+      arrangement.splice(currIdx, 1);
+      arrangement.push(`juror${jurorOnDeck}`);
       nextJurorOnDeck();
       return arrangement;
     });
