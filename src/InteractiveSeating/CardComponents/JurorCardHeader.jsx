@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import Colors from "../Colors";
 import { Typography, CardHeader, makeStyles } from "@material-ui/core";
 import LoopIcon from "@material-ui/icons/Loop";
 import CloseIcon from "@material-ui/icons/Close";
@@ -8,16 +9,22 @@ const useStyles = makeStyles((theme) => ({
   header: {
     paddingTop: "0",
     paddingBottom: "0",
-    height: "auto",
+    height: "50px",
     maxHeight: "20%",
-    backgroundColor: "#bdbdbd",
+    backgroundColor: Colors.light4,
+    position: "relative",
+    boxShadow: `0 4px 4px -1px ${Colors.light5}`,
   },
   actionButton: {
+    position: "absolute",
+    right: "-5px",
+  },
+  swapButton: {
     paddingTop: "10px",
     minWidth: "32px",
   },
   jurorName: {
-    margin: "0",
+    width: "50%",
   },
 }));
 
@@ -27,24 +34,27 @@ export default function JurorCardHeader(props) {
     <CardHeader
       className={classes.header}
       title={
-        <Typography className={classes.jurorName} variant="h6">
-          {props.jurorName}
-        </Typography>
+        <Typography className={classes.jurorName}>{props.jurorName}</Typography>
       }
       action={
-        <div>
+        <div className={classes.actionButton}>
           <Button
-            className={classes.actionButton}
-            onClick={() => props.switchAction(props.keyId)}
+            className={classes.swapButton}
+            onClick={() => {
+              props.switchAction(props.keyId);
+            }}
           >
             <LoopIcon color="action" />
           </Button>
+          {/*
+          
           <Button
             className={classes.actionButton}
             onClick={() => props.closeAction(props.keyId)}
           >
             <CloseIcon color="action" />
           </Button>
+*/}
         </div>
       }
     ></CardHeader>

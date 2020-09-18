@@ -4,29 +4,27 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
-import JurorsContext from "../../JurorsContext";
+import JurorsContext from "../JurorsContext";
 
-export default function RaceRadio(props) {
+export default function HousingRadio(props) {
   const { JurorsData, setJuror } = useContext(JurorsContext);
 
   const handleChange = (event) => {
-    setJuror("race", event.target.value, props.juror);
+    setJuror("housing", event.target.value, props.juror);
   };
 
   return (
     <FormControl component="fieldset" margin="dense">
-      <FormLabel component="legend">Race</FormLabel>
+      <FormLabel component="legend">Housing</FormLabel>
       <RadioGroup
         row
-        aria-label="race"
-        name="race1"
-        value={JurorsData[props.juror].race}
+        aria-label="housing"
+        name="housing1"
+        value={JurorsData[props.juror].housing}
         onChange={handleChange}
       >
-        <FormControlLabel value="W" control={<Radio />} label="W" />
-        <FormControlLabel value="B" control={<Radio />} label="B" />
-        <FormControlLabel value="H" control={<Radio />} label="H" />
-        <FormControlLabel value="A" control={<Radio />} label="A" />
+        <FormControlLabel value="own" control={<Radio />} label="Own" />
+        <FormControlLabel value="rent" control={<Radio />} label="Rent" />
       </RadioGroup>
     </FormControl>
   );

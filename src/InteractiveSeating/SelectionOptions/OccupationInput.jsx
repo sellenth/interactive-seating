@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import TextField from "@material-ui/core/TextField";
-import JurorsContext from "../../JurorsContext";
+import JurorsContext from "../JurorsContext";
 
 export default function OccupationInput(props) {
   const { JurorsData, setJuror } = useContext(JurorsContext);

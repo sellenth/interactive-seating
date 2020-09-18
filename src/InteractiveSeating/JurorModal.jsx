@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import { Modal, Box, Button, makeStyles } from "@material-ui/core";
-import GenderRadio from "./JurorCard/SelectionOptions/GenderRadio";
-import RaceRadio from "./JurorCard/SelectionOptions/RaceRadio";
-import MaritalRadio from "./JurorCard/SelectionOptions/MaritalRadio";
-import HousingRadio from "./JurorCard/SelectionOptions/HousingRadio";
-import OccupationInput from "./JurorCard/SelectionOptions/OccupationInput";
+import GenderRadio from "./SelectionOptions/GenderRadio";
+import RaceRadio from "./SelectionOptions/RaceRadio";
+import MaritalRadio from "./SelectionOptions/MaritalRadio";
+import HousingRadio from "./SelectionOptions/HousingRadio";
+import OccupationInput from "./SelectionOptions/OccupationInput";
+import Colors from "./Colors";
 import JurorsContext from "./JurorsContext";
 
 const useStyles = makeStyles((theme) => ({
@@ -16,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     width: 400,
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: Colors.light1,
     border: "2px solid #000",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),

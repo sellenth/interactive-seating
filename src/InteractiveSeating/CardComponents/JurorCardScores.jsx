@@ -1,5 +1,6 @@
 import React from "react";
 import { Typography, Box, makeStyles } from "@material-ui/core";
+import Colors from "../Colors";
 
 const useStyles = makeStyles((theme) => ({
   scores: {
@@ -19,6 +20,8 @@ const useStyles = makeStyles((theme) => ({
   },
   scoreLabel: {
     fontSize: ".8em",
+    margin: "0 auto",
+    width: "50%",
     textAlign: "center",
   },
 }));
